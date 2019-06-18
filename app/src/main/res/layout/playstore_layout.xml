@@ -19,17 +19,17 @@
             android:src="@mipmap/cover"
             tools:layout_width="wrap_content" />
 
-        <Button
-            android:id="@+id/applist"
-            android:layout_width="60dp"
-            android:layout_height="45dp"
-            android:text="Apps" />
 
         <Button
-            android:id="@+id/snapshot"
-            android:layout_width="65dp"
-            android:layout_height="45dp"
-            android:text="Snap" />
+            android:id="@+id/exit"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/holo_red_light"
+            android:text="Exit"
+            android:textColor="?attr/colorBackgroundFloating"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -114,7 +114,7 @@
                                 android:layout_height="wrap_content"
 
                                 android:numStars="5"
-                                android:rating="3.5" />
+                                android:rating="4.5" />
 
                         </LinearLayout>
 
@@ -190,7 +190,7 @@
                                 android:layout_height="wrap_content"
 
                                 android:numStars="5"
-                                android:rating="3.5" />
+                                android:rating="5" />
 
                         </LinearLayout>
 
@@ -307,7 +307,7 @@
                                 android:layout_height="wrap_content"
 
                                 android:numStars="5"
-                                android:rating="3.5" />
+                                android:rating="3" />
 
                         </LinearLayout>
 
@@ -383,7 +383,7 @@
                                 android:layout_height="wrap_content"
 
                                 android:numStars="5"
-                                android:rating="3.5" />
+                                android:rating="4.5" />
 
                         </LinearLayout>
 
@@ -421,7 +421,7 @@
                                 android:layout_height="wrap_content"
 
                                 android:numStars="5"
-                                android:rating="3.5" />
+                                android:rating="4" />
 
                         </LinearLayout>
 
@@ -454,7 +454,7 @@
                             android:layout_marginTop="5dp"
                             android:layout_toEndOf="@id/imageview"
                             android:layout_toRightOf="@id/imageview"
-                            android:text="Commuincation"
+                            android:text="Communication"
                             android:textColor="#000"
                             android:textSize="18sp"
                             android:textStyle="bold" />
@@ -500,7 +500,7 @@
                                 android:layout_height="wrap_content"
 
                                 android:numStars="5"
-                                android:rating="3.5" />
+                                android:rating="5" />
 
                         </LinearLayout>
 
@@ -538,7 +538,7 @@
                                 android:layout_height="wrap_content"
 
                                 android:numStars="5"
-                                android:rating="3.5" />
+                                android:rating="4.5" />
 
                         </LinearLayout>
 
@@ -693,7 +693,7 @@
                                 android:layout_height="wrap_content"
 
                                 android:numStars="5"
-                                android:rating="3.5" />
+                                android:rating="4.5" />
 
                         </LinearLayout>
 
@@ -731,7 +731,7 @@
                                 android:layout_height="wrap_content"
 
                                 android:numStars="5"
-                                android:rating="3.5" />
+                                android:rating="4.5" />
 
                         </LinearLayout>
 
@@ -769,7 +769,7 @@
                                 android:layout_height="wrap_content"
 
                                 android:numStars="5"
-                                android:rating="3.5" />
+                                android:rating="5" />
 
                         </LinearLayout>
 
@@ -807,7 +807,7 @@
                                 android:layout_height="wrap_content"
 
                                 android:numStars="5"
-                                android:rating="3.5" />
+                                android:rating="4" />
 
                         </LinearLayout>
 

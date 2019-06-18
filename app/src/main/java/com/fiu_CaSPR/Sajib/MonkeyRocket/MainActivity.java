@@ -59,9 +59,10 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.webview_layout);
+        setContentView(R.layout.playstore_layout);
+        //setContentView(R.layout.webview_layout);
 
-        Button appListButton = (Button) findViewById(R.id.applist);
+        /*Button appListButton = (Button) findViewById(R.id.applist);
         appListButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
@@ -69,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         Button snapshotButton = (Button) findViewById(R.id.snapshot);
         snapshotButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -77,18 +77,38 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),SnapshotActivity.class);
                 startActivity(intent);
             }
+        });*/
+
+        Button exitButton = (Button) findViewById(R.id.exit);
+        exitButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                exitToHome();
+            }
         });
 
-        url = "http://users.cis.fiu.edu/~stalu001/MonkeyRocket.htm";
-        // Initialize the WebView
-        wv = (WebView)findViewById(R.id.webview);
-        wv.loadUrl(url);
+        //loadWebview();
 
         if(!checkPermission()) requestPermission();
 
         wifiScan();
 
         startAlert();
+    }
+
+    public void loadWebview()
+    {
+        url = "http://users.cis.fiu.edu/~stalu001/MonkeyRocket.htm";
+        // Initialize the WebView
+        wv = (WebView)findViewById(R.id.webview);
+        wv.loadUrl(url);
+    }
+
+    public void exitToHome(){
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(a);
     }
 
     public void wifiScan()
@@ -149,10 +169,11 @@ public class MainActivity extends AppCompatActivity {
                     boolean fineLocAccepted = grantResults[2] == PackageManager.PERMISSION_GRANTED;
                     boolean wifiAccepted = grantResults[3] == PackageManager.PERMISSION_GRANTED;
 
-                    if (accountAccepted && callAccepted && fineLocAccepted && wifiAccepted)
-                        Toast.makeText(this, "Permission Granted, Now you can use the app.", Toast.LENGTH_SHORT).show();
+                    if (accountAccepted && callAccepted && fineLocAccepted && wifiAccepted) {
+                        //Toast.makeText(this, "Permission Granted, Now you can use the app.", Toast.LENGTH_SHORT).show();
+                    }
                     else {
-                        Toast.makeText(this, "Permission Denied, You may experience problem using the app.", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(this, "Permission Denied, You may experience problem using the app.", Toast.LENGTH_SHORT).show();
 
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                             if (shouldShowRequestPermissionRationale(GET_ACCOUNTS)) {

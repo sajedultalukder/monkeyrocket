@@ -1,0 +1,4 @@
+#Wed Jun 12 06:16:52 EDT 2019
+base.0=/Users/sajib/Documents/Projects/MonkeyRocket/app/build/intermediates/transforms/dex/release/0
+path.0=classes.dex
+renamed.0=classes.dex

