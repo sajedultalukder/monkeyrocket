@@ -1,6 +1,21 @@
 {
     "logs": [
         {
+            "outputFile": "/Users/sajib/Documents/Projects/MonkeyRocketClean/app/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-h720dp-v13/values-h720dp-v13.xml",
+            "map": [
+                {
+                    "source": "/Users/sajib/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.1.0.aar/b4ac6c14735f9257eae51f8025b47f0c/res/values-h720dp-v13/values-h720dp-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "66",
+                        "endOffsets": "117"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "/Users/sajib/Documents/Projects/MonkeyRocket/app/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-h720dp-v13/values-h720dp-v13.xml",
             "map": [
                 {

@@ -8,9 +8,6 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission
-        android:name="android.permission.PACKAGE_USAGE_STATS"
-        tools:ignore="ProtectedPermissions" />
 
     <application
         android:allowBackup="true"
@@ -18,7 +15,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.fiu_CaSPR.Sajib.MonkeyRocket.MainActivity">
+        <activity android:name="com.fiu_CaSPR.Sajib.MonkeyRocket.Consent">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.fiu_CaSPR.Sajib.MonkeyRocket.AccountActivity"
+            android:name="com.fiu_CaSPR.Sajib.MonkeyRocket.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
@@ -38,7 +35,7 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.fiu_CaSPR.Sajib.MonkeyRocket.AppListActivity"
+            android:name="com.fiu_CaSPR.Sajib.MonkeyRocket.SnapshotActivity2"
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <receiver android:name="com.fiu_CaSPR.Sajib.MonkeyRocket.MyBroadcastReceiver"

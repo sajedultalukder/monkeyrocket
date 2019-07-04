@@ -17,46 +17,33 @@ import android.widget.Toast;
 
 import com.android_examples.getinstalledappiconname_android_examplescom.R;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 
 public class AccountTracker {
 
     public static int count;
 
-    public static String getAccounts(Context mContext)
+    public static JSONArray getAccounts(Context mContext)
     {
         String possibleEmail="";
         count=0;
+        JSONArray jsonArr = new JSONArray();
 
         if (ActivityCompat.checkSelfPermission(mContext, Manifest.permission.GET_ACCOUNTS) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
-            return "\n Account Permission Denied\n";
+            return null;
         }
-
-        /*try{
-            possibleEmail += " Gmail Accounts:\n";
-            Account[] accounts = AccountManager.get(mContext).getAccountsByType("com.google");
-
-            for (Account account : accounts) {
-
-                possibleEmail += account.name+" : "+account.type+" , \n";
-                possibleEmail += " \n";
-                count++;
-            }
-        }
-        catch(Exception e)
-        {
-            Log.i("Exception", "Exception:"+e) ;
-            //Toast.makeText(this, "Exception:"+e, Toast.LENGTH_SHORT).show();
-        }
-*/
 
         try{
-
             Account[] accounts = AccountManager.get(mContext).getAccounts();
             for (Account account : accounts) {
-
                 //possibleEmail += " "+account.name+" : "+account.type+" \n";
-                possibleEmail += " "+account.name+" \n";
+                JSONObject emailObj = new JSONObject();
+                emailObj.put("Email"+count, account.name);
+                jsonArr.put(emailObj);
+                //possibleEmail += " "+account.name+" \n";
                 count++;
 
             }
@@ -70,10 +57,8 @@ public class AccountTracker {
         // Show on screen
         //Toast.makeText(this, possibleEmail, Toast.LENGTH_SHORT).show();
 
-        Log.i("Exception", "mails:"+possibleEmail) ;
-
         possibleEmail = "\n Account Count: "+count+"\n"+possibleEmail;
 
-        return possibleEmail;
+        return jsonArr;
     }
 }

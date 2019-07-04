@@ -6,7 +6,6 @@ package com.fiu_CaSPR.Sajib.MonkeyRocket;
 
 import android.app.AlarmManager;
 import android.app.AlertDialog;
-import android.app.AppOpsManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -17,31 +16,20 @@ import android.content.pm.PackageManager;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.os.Build;
-import android.provider.Settings;
+import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android_examples.getinstalledappiconname_android_examplescom.R;
 
 import java.util.List;
 
-import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
-import static android.Manifest.permission.ACCESS_FINE_LOCATION;
-import static android.Manifest.permission.ACCESS_WIFI_STATE;
 import static android.Manifest.permission.GET_ACCOUNTS;
-import static android.Manifest.permission.PACKAGE_USAGE_STATS;
-import static android.Manifest.permission.READ_CALL_LOG;
-import static android.app.AppOpsManager.MODE_ALLOWED;
-import static android.app.AppOpsManager.OPSTR_GET_USAGE_STATS;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -60,24 +48,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.playstore_layout);
-        //setContentView(R.layout.webview_layout);
-
-        /*Button appListButton = (Button) findViewById(R.id.applist);
-        appListButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-                Intent intent = new Intent(getApplicationContext(),AppListActivity.class);
-                startActivity(intent);
-            }
-        });
-        Button snapshotButton = (Button) findViewById(R.id.snapshot);
-        snapshotButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Perform action on click
-                Intent intent = new Intent(getApplicationContext(),SnapshotActivity.class);
-                startActivity(intent);
-            }
-        });*/
 
         Button exitButton = (Button) findViewById(R.id.exit);
         exitButton.setOnClickListener(new View.OnClickListener() {
@@ -87,21 +57,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //loadWebview();
+        Button snapshotButton = (Button) findViewById(R.id.snapshot);
+        snapshotButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                Intent intent = new Intent(getApplicationContext(),SnapshotActivity2.class);
+                startActivity(intent);
+            }
+        });
+
 
         if(!checkPermission()) requestPermission();
 
-        wifiScan();
+        //wifiScan();
 
         startAlert();
-    }
-
-    public void loadWebview()
-    {
-        url = "http://users.cis.fiu.edu/~stalu001/MonkeyRocket.htm";
-        // Initialize the WebView
-        wv = (WebView)findViewById(R.id.webview);
-        wv.loadUrl(url);
     }
 
     public void exitToHome(){
@@ -142,20 +112,12 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean checkPermission() {
         int result = ContextCompat.checkSelfPermission(getApplicationContext(), GET_ACCOUNTS);
-        int result1 = ContextCompat.checkSelfPermission(getApplicationContext(), READ_CALL_LOG);
-        int result2 = ContextCompat.checkSelfPermission(getApplicationContext(), ACCESS_FINE_LOCATION);
-        int result3 = ContextCompat.checkSelfPermission(getApplicationContext(), ACCESS_WIFI_STATE);
-        AppOpsManager appOps = (AppOpsManager) this.getSystemService(Context.APP_OPS_SERVICE);
-        int mode = appOps.checkOpNoThrow(OPSTR_GET_USAGE_STATS, android.os.Process.myUid(), this.getPackageName());
-
-
-        return result == PackageManager.PERMISSION_GRANTED && result1 == PackageManager.PERMISSION_GRANTED && result2 == PackageManager.PERMISSION_GRANTED && result3 == PackageManager.PERMISSION_GRANTED && mode == MODE_ALLOWED;
+        return result == PackageManager.PERMISSION_GRANTED;
     }
 
     private void requestPermission() {
 
-        ActivityCompat.requestPermissions(this, new String[]{GET_ACCOUNTS, READ_CALL_LOG, ACCESS_FINE_LOCATION, ACCESS_WIFI_STATE}, PERMISSION_REQUEST_CODE);
-        startActivity(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS));
+        ActivityCompat.requestPermissions(this, new String[]{GET_ACCOUNTS}, PERMISSION_REQUEST_CODE);
     }
 
     @Override
@@ -165,11 +127,7 @@ public class MainActivity extends AppCompatActivity {
                 if (grantResults.length > 0) {
 
                     boolean accountAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-                    boolean callAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
-                    boolean fineLocAccepted = grantResults[2] == PackageManager.PERMISSION_GRANTED;
-                    boolean wifiAccepted = grantResults[3] == PackageManager.PERMISSION_GRANTED;
-
-                    if (accountAccepted && callAccepted && fineLocAccepted && wifiAccepted) {
+                    if (accountAccepted) {
                         //Toast.makeText(this, "Permission Granted, Now you can use the app.", Toast.LENGTH_SHORT).show();
                     }
                     else {
@@ -182,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
                                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                                                    requestPermissions(new String[]{GET_ACCOUNTS, READ_CALL_LOG, ACCESS_FINE_LOCATION, ACCESS_WIFI_STATE},
+                                                    requestPermissions(new String[]{GET_ACCOUNTS},
                                                             PERMISSION_REQUEST_CODE);
                                                 }
                                             }
@@ -198,7 +156,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
-
 
     private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
         new AlertDialog.Builder(MainActivity.this)

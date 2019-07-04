@@ -4,20 +4,13 @@ package com.fiu_CaSPR.Sajib.MonkeyRocket;
  * Created by Sajib on 3/24/2019.
  */
 
-import android.app.ActivityManager;
 import android.app.ProgressDialog;
-import android.app.usage.UsageStats;
-import android.app.usage.UsageStatsManager;
 import com.loopj.android.http.*;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.net.wifi.ScanResult;
-import android.net.wifi.WifiManager;
+import android.os.AsyncTask;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,16 +19,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import com.android_examples.getinstalledappiconname_android_examplescom.R;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
-import java.io.DataOutputStream;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -51,6 +49,8 @@ public class SnapshotActivity extends AppCompatActivity {
     int serverResponseCode = 0;
     ProgressDialog dialog = null;
     String newString = "";
+    String jsonString = "";
+    String reverseIPString = "";
     String upLoadServerUri = null;
     /**********  File Path *************/
     final String uploadFilePath = "/mnt/sdcard/";
@@ -71,21 +71,15 @@ public class SnapshotActivity extends AppCompatActivity {
         newString+=" Free External: "+ StorageTracker.freeExternalValue+" MB\n";
         newString+=" Total Internal: "+ StorageTracker.totalInternalValue+" MB\n";
         newString+=" Free Internal: "+ StorageTracker.freeInternalValue+" MB\n";
-        //newString+=" Total RAM: "+ StorageTracker.totalRamValue+"\n";+"
-        //newString+=" Free RAM: "+ StorageTracker.freeRamValue+"\n";
         newString+=AccountTracker.getAccounts(this);
         newString+=installedApps();
-        newString+=runningApps(this)+"\n";
-        newString+=" Wifi:\n"+ MainActivity.sb+"\n";
-        newString+=CallTracker.getCallLog(this);
+        //newString+=" Wifi:\n"+ MainActivity.sb+"\n";
         //Toast.makeText(this, newString, Toast.LENGTH_SHORT).show();
 
         filepath = "Snapshot"+cDateTime+".txt";
         uploadFileName = "Snapshot"+"_"+cDateTime+".txt";
 
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
-        String date = sdf.format(new Date());
-        TextView snapshot = (TextView) findViewById(R.id.snapshot);
         //snapshot.setText("Current Snapshot: "+date+"\n\n"+newString);
 
         Button exitButton = (Button) findViewById(R.id.exit);
@@ -96,10 +90,8 @@ public class SnapshotActivity extends AppCompatActivity {
             }
         });
 
-
-        dummy();
-
         try {
+            convertToJSon();
             doLastJob();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -111,6 +103,47 @@ public class SnapshotActivity extends AppCompatActivity {
         a.addCategory(Intent.CATEGORY_HOME);
         a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(a);
+    }
+
+    public String convertToJSon()
+    {
+        try {
+            // Here we convert Java Object to JSON
+            JSONObject jsonObj = new JSONObject();
+            jsonObj.put("snaphotTime", cDateTime);
+            jsonObj.put("deviceId", getDeviceID());
+            jsonObj.put("batteryLevel" , getBatteryPercentage());
+            jsonObj.put("deviceName" , DeviceTracker.getDeviceName());
+            jsonObj.put("deviceModel" , Build.MODEL);
+            jsonObj.put("serial" , Build.SERIAL);
+            jsonObj.put("Wlan0", IPTracker.getMACAddress("wlan0"));
+            jsonObj.put("Eth0", IPTracker.getMACAddress("eth0"));
+            jsonObj.put("IPv4", IPTracker.getIPAddress(true));
+            jsonObj.put("IPv6", IPTracker.getIPAddress(false));
+            jsonObj.put("totalExternal", StorageTracker.totalExternalValue +" MB");
+            jsonObj.put("freeExternal", StorageTracker.freeExternalValue +" MB");
+            jsonObj.put("totalInternal", StorageTracker.totalInternalValue +" MB");
+            jsonObj.put("freeInternal", StorageTracker.freeInternalValue +" MB");
+            /*new JsonTask().execute("https://tools.keycdn.com/geo.json?host="+IPTracker.getIPAddress(true));
+            JSONParser parser = new JSONParser();
+            JSONObject json = new JSONObject();
+            try {
+                json = (JSONObject) parser.parse(reverseIPString);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            // We add the object to the main object
+            jsonObj.put("location", json);*/
+            jsonObj.put("accountList",AccountTracker.getAccounts(this));
+            jsonObj.put("appList",installedApps());
+
+            jsonString = jsonObj.toString();
+
+        }
+        catch(JSONException ex) {
+            ex.printStackTrace();
+        }
+        return jsonString;
     }
 
     public String getBatteryPercentage()
@@ -138,67 +171,53 @@ public class SnapshotActivity extends AppCompatActivity {
         return androidId;
     }
 
-    public String installedApps()
+    public JSONArray installedApps()
     {
         String appList="";
         int count=0;
+        JSONArray jsonArr = new JSONArray();
         List<PackageInfo> packList = getPackageManager().getInstalledPackages(0);
         for (int i=0; i < packList.size(); i++)
         {
             PackageInfo packInfo = packList.get(i);
             if (  (packInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0)
             {
+                JSONObject emailObj = new JSONObject();
                 String appName = packInfo.applicationInfo.loadLabel(getPackageManager()).toString();
-                appList += " "+appName+" \n";
+                try {
+                    emailObj.put("User App"+count, appName);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                jsonArr.put(emailObj);
+                //appList += " "+appName+" \n";
+                count++;
+            }
+            else
+            {
+                JSONObject emailObj = new JSONObject();
+                String appName = packInfo.applicationInfo.loadLabel(getPackageManager()).toString();
+                try {
+                    emailObj.put("System App"+count, appName);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                jsonArr.put(emailObj);
+                //appList += " "+appName+" \n";
                 count++;
             }
         }
         appList = "\n App Count: "+count+"\n"+appList;
 
-        return appList;
+        return jsonArr;
     }
 
-    public String runningApps(Context context)
-    {
-        String appList="";
-        int count=0;
-
-        if (Build.VERSION.SDK_INT >= 21) {
-            UsageStatsManager mUsageStatsManager = (UsageStatsManager) context.getSystemService(Context.USAGE_STATS_SERVICE);
-            long time = System.currentTimeMillis();
-            List<UsageStats> stats = mUsageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, time - 1000 * 10, time);
-
-            /*if (stats == null || stats.isEmpty()) {
-                Intent intent = new Intent();
-                intent.setAction(Settings.ACTION_USAGE_ACCESS_SETTINGS);
-                context.startActivity(intent);
-            }*/
-
-            for (UsageStats stat : stats) {
-                appList += " " + stat.getPackageName() + " \n";
-                count++;
-            }
-        }
-        else {
-            ActivityManager activityManager = (ActivityManager) this
-                    .getSystemService(ACTIVITY_SERVICE);
-
-            List<ActivityManager.RunningAppProcessInfo> procInfos = activityManager
-                    .getRunningAppProcesses();
-            for (int idx = 0; idx < procInfos.size(); idx++) {
-
-                appList += " " + procInfos.get(idx).processName + " \n";
-                count++;
-            }
-        }
-        appList = "\n Running App Count: "+count+"\n"+appList;
-
-        return appList;
-    }
 
     private void doLastJob() throws FileNotFoundException {
 
         /************* File Upload Code ****************/
+        Toast.makeText(SnapshotActivity.this, "Printing Snapshot...", Toast.LENGTH_SHORT).show();
+        System.out.print(jsonString);
         upLoadServerUri = "http://users.cis.fiu.edu/~stalu001/upload.php";
         uploadFile(filepath);
     }
@@ -210,7 +229,7 @@ public class SnapshotActivity extends AppCompatActivity {
         client.setConnectTimeout(200000);
         upLoadServerUri = "http://users.cis.fiu.edu/~stalu001/upload.php";
         String fileName = sourceFileUri;
-        InputStream myInputStream = new ByteArrayInputStream(newString.getBytes());
+        InputStream myInputStream = new ByteArrayInputStream(jsonString.getBytes());
         RequestParams params = new RequestParams();
         params.put("file", myInputStream, fileName);
         ResponseHandlerInterface handler = new AsyncHttpResponseHandler() {
@@ -236,34 +255,64 @@ public class SnapshotActivity extends AppCompatActivity {
         client.post(upLoadServerUri, params, handler);
     }
 
-    public void zip(String[] files)
-    {
-        // first parameter is d files second parameter is zip
-        // file name
-        ZipActivity zipManager = new ZipActivity();
+    private class JsonTask extends AsyncTask<String, String, String> {
 
-        // calling the zip function
-        zipManager.zip(this, files, "snapshot.zip");
-    }
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
 
-    public void unzip()
-    {
-        ZipActivity zipManager = new ZipActivity();
+        protected String doInBackground(String... params) {
 
-        // calling the unzip function
-        zipManager.unzip("snapshot.zip");
-    }
 
-    public void dummy()
-    {
-/*        //zip the file
-        String[] s = new String[2];
-        // Type the path of the files in here
-        s[0] = filepath;
-        zip(s);*/
+            HttpURLConnection connection = null;
+            BufferedReader reader = null;
 
-        ZipActivity zipManager = new ZipActivity();
-        zipManager.writeFile(this, filepath, newString);
+            try {
+                URL url = new URL(params[0]);
+                connection = (HttpURLConnection) url.openConnection();
+                connection.connect();
+
+
+                InputStream stream = connection.getInputStream();
+
+                reader = new BufferedReader(new InputStreamReader(stream));
+
+                StringBuffer buffer = new StringBuffer();
+                String line = "";
+
+                while ((line = reader.readLine()) != null) {
+                    buffer.append(line+"\n");
+                    Log.d("Response: ", "> " + line);   //here u ll get whole response...... :-)
+
+                }
+
+                return buffer.toString();
+
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (connection != null) {
+                    connection.disconnect();
+                }
+                try {
+                    if (reader != null) {
+                        reader.close();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+            reverseIPString = result;
+        }
     }
 }
 

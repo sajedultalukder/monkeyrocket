@@ -16,6 +16,21 @@
             ]
         },
         {
+            "outputFile": "/Users/sajib/Documents/Projects/MonkeyRocketClean/app/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-port/values-port.xml",
+            "map": [
+                {
+                    "source": "/Users/sajib/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.1.0.aar/b4ac6c14735f9257eae51f8025b47f0c/res/values-port/values-port.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "55",
+                        "endOffsets": "106"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "/Users/sajib/Documents/Projects/MonkeyRocket/app/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-port/values-port.xml",
             "map": [
                 {
