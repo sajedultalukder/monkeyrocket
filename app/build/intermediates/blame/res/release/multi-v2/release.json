@@ -136,21 +136,6 @@
             ]
         },
         {
-            "outputFile": "/Users/sajib/Downloads/MonkeyRocket/app/build/intermediates/res/merged/release/values-mn-rMN_values-mn-rMN.arsc.flat",
-            "map": [
-                {
-                    "source": "/Users/sajib/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.1.0.aar/b4ac6c14735f9257eae51f8025b47f0c/res/values-mn-rMN/values-mn-rMN.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,168,276,399,499,612,699,805,917,999,1081,1163,1272,1376,1473,1581,1682,1785,1907,2004,2085",
-                        "endColumns": "112,107,122,99,112,86,105,111,81,81,81,108,103,96,107,100,102,121,96,80,100",
-                        "endOffsets": "163,271,394,494,607,694,800,912,994,1076,1158,1267,1371,1468,1576,1677,1780,1902,1999,2080,2181"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/Users/sajib/Documents/Projects/MonkeyRocket/app/build/intermediates/res/merged/release/values-bg_values-bg.arsc.flat",
             "map": [
                 {
@@ -161,6 +146,21 @@
                         "startOffsets": "55,170,281,409,516,621,707,812,933,1012,1090,1173,1287,1396,1496,1610,1716,1824,1947,2046,2129",
                         "endColumns": "114,110,127,106,104,85,104,120,78,77,82,113,108,99,113,105,107,122,98,82,100",
                         "endOffsets": "165,276,404,511,616,702,807,928,1007,1085,1168,1282,1391,1491,1605,1711,1819,1942,2041,2124,2225"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/sajib/Downloads/MonkeyRocket/app/build/intermediates/res/merged/release/values-mn-rMN_values-mn-rMN.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/sajib/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.1.0.aar/b4ac6c14735f9257eae51f8025b47f0c/res/values-mn-rMN/values-mn-rMN.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,168,276,399,499,612,699,805,917,999,1081,1163,1272,1376,1473,1581,1682,1785,1907,2004,2085",
+                        "endColumns": "112,107,122,99,112,86,105,111,81,81,81,108,103,96,107,100,102,121,96,80,100",
+                        "endOffsets": "163,271,394,494,607,694,800,912,994,1076,1158,1267,1371,1468,1576,1677,1780,1902,1999,2080,2181"
                     }
                 }
             ]
@@ -181,16 +181,16 @@
             ]
         },
         {
-            "outputFile": "/Users/sajib/Documents/Projects/MonkeyRocketClean/app/build/intermediates/res/merged/release/values-it_values-it.arsc.flat",
+            "outputFile": "/Users/sajib/Documents/Projects/MonkeyRocketClean/app/build/intermediates/res/merged/release/values-es_values-es.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/sajib/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.1.0.aar/b4ac6c14735f9257eae51f8025b47f0c/res/values-it/values-it.xml",
+                    "source": "/Users/sajib/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.1.0.aar/b4ac6c14735f9257eae51f8025b47f0c/res/values-es/values-es.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,164,272,395,495,604,688,797,922,999,1075,1156,1262,1370,1468,1572,1677,1784,1906,2006,2089",
-                        "endColumns": "108,107,122,99,108,83,108,124,76,75,80,105,107,97,103,104,106,121,99,82,100",
-                        "endOffsets": "159,267,390,490,599,683,792,917,994,1070,1151,1257,1365,1463,1567,1672,1779,1901,2001,2084,2185"
+                        "startOffsets": "55,172,280,403,516,624,709,810,938,1014,1090,1172,1279,1379,1478,1586,1693,1800,1922,2022,2104",
+                        "endColumns": "116,107,122,112,107,84,100,127,75,75,81,106,99,98,107,106,106,121,99,81,100",
+                        "endOffsets": "167,275,398,511,619,704,805,933,1009,1085,1167,1274,1374,1473,1581,1688,1795,1917,2017,2099,2200"
                     }
                 }
             ]
@@ -211,16 +211,16 @@
             ]
         },
         {
-            "outputFile": "/Users/sajib/Documents/Projects/MonkeyRocketClean/app/build/intermediates/res/merged/release/values-es_values-es.arsc.flat",
+            "outputFile": "/Users/sajib/Documents/Projects/MonkeyRocketClean/app/build/intermediates/res/merged/release/values-it_values-it.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/sajib/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.1.0.aar/b4ac6c14735f9257eae51f8025b47f0c/res/values-es/values-es.xml",
+                    "source": "/Users/sajib/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.1.0.aar/b4ac6c14735f9257eae51f8025b47f0c/res/values-it/values-it.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,172,280,403,516,624,709,810,938,1014,1090,1172,1279,1379,1478,1586,1693,1800,1922,2022,2104",
-                        "endColumns": "116,107,122,112,107,84,100,127,75,75,81,106,99,98,107,106,106,121,99,81,100",
-                        "endOffsets": "167,275,398,511,619,704,805,933,1009,1085,1167,1274,1374,1473,1581,1688,1795,1917,2017,2099,2200"
+                        "startOffsets": "55,164,272,395,495,604,688,797,922,999,1075,1156,1262,1370,1468,1572,1677,1784,1906,2006,2089",
+                        "endColumns": "108,107,122,99,108,83,108,124,76,75,80,105,107,97,103,104,106,121,99,82,100",
+                        "endOffsets": "159,267,390,490,599,683,792,917,994,1070,1151,1257,1365,1463,1567,1672,1779,1901,2001,2084,2185"
                     }
                 }
             ]
@@ -256,6 +256,21 @@
             ]
         },
         {
+            "outputFile": "/Users/sajib/Documents/Projects/MonkeyRocket/app/build/intermediates/res/merged/release/values-zu_values-zu.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/sajib/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.1.0.aar/b4ac6c14735f9257eae51f8025b47f0c/res/values-zu/values-zu.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,163,271,394,501,615,703,806,933,1013,1093,1179,1283,1389,1487,1594,1700,1806,1926,2022,2103",
+                        "endColumns": "107,107,122,106,113,87,102,126,79,79,85,103,105,97,106,105,105,119,95,80,100",
+                        "endOffsets": "158,266,389,496,610,698,801,928,1008,1088,1174,1278,1384,1482,1589,1695,1801,1921,2017,2098,2199"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "/Users/sajib/Documents/Projects/MonkeyRocket/app/build/intermediates/res/merged/release/values-v11_values-v11.arsc.flat",
             "map": [
                 {
@@ -267,21 +282,6 @@
                         "endLines": "7,13,19,25,31,37,38,42,46,47,51,55,56,60,65,70,75,77,79,80,81,134,188,189",
                         "endColumns": "12,12,12,12,12,12,88,12,12,100,12,12,102,12,12,12,12,12,12,70,82,12,12,90",
                         "endOffsets": "469,894,1322,1748,2175,2600,2689,2935,3184,3285,3537,3792,3895,4148,4556,4976,5398,5505,5634,5705,5788,9727,13809,13900"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "/Users/sajib/Documents/Projects/MonkeyRocket/app/build/intermediates/res/merged/release/values-zu_values-zu.arsc.flat",
-            "map": [
-                {
-                    "source": "/Users/sajib/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.1.0.aar/b4ac6c14735f9257eae51f8025b47f0c/res/values-zu/values-zu.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,163,271,394,501,615,703,806,933,1013,1093,1179,1283,1389,1487,1594,1700,1806,1926,2022,2103",
-                        "endColumns": "107,107,122,106,113,87,102,126,79,79,85,103,105,97,106,105,105,119,95,80,100",
-                        "endOffsets": "158,266,389,496,610,698,801,928,1008,1088,1174,1278,1384,1482,1589,1695,1801,1921,2017,2098,2199"
                     }
                 }
             ]
@@ -303,16 +303,16 @@
             ]
         },
         {
-            "outputFile": "/Users/sajib/Downloads/MonkeyRocket/app/build/intermediates/res/merged/release/values-et-rEE_values-et-rEE.arsc.flat",
+            "outputFile": "/Users/sajib/Documents/Projects/MonkeyRocketClean/app/build/intermediates/res/merged/release/values-cs_values-cs.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/sajib/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.1.0.aar/b4ac6c14735f9257eae51f8025b47f0c/res/values-et-rEE/values-et-rEE.xml",
+                    "source": "/Users/sajib/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.1.0.aar/b4ac6c14735f9257eae51f8025b47f0c/res/values-cs/values-cs.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,172,280,403,510,621,707,809,926,1006,1084,1167,1278,1383,1482,1592,1693,1796,1924,2026,2108",
-                        "endColumns": "116,107,122,106,110,85,101,116,79,77,82,110,104,98,109,100,102,127,101,81,100",
-                        "endOffsets": "167,275,398,505,616,702,804,921,1001,1079,1162,1273,1378,1477,1587,1688,1791,1919,2021,2103,2204"
+                        "startOffsets": "55,162,271,395,497,606,692,797,914,995,1076,1160,1264,1373,1472,1578,1688,1795,1917,2015,2097",
+                        "endColumns": "106,108,123,101,108,85,104,116,80,80,83,103,108,98,105,109,106,121,97,81,100",
+                        "endOffsets": "157,266,390,492,601,687,792,909,990,1071,1155,1259,1368,1467,1573,1683,1790,1912,2010,2092,2193"
                     }
                 }
             ]
@@ -333,16 +333,16 @@
             ]
         },
         {
-            "outputFile": "/Users/sajib/Documents/Projects/MonkeyRocketClean/app/build/intermediates/res/merged/release/values-cs_values-cs.arsc.flat",
+            "outputFile": "/Users/sajib/Downloads/MonkeyRocket/app/build/intermediates/res/merged/release/values-et-rEE_values-et-rEE.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/sajib/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.1.0.aar/b4ac6c14735f9257eae51f8025b47f0c/res/values-cs/values-cs.xml",
+                    "source": "/Users/sajib/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.1.0.aar/b4ac6c14735f9257eae51f8025b47f0c/res/values-et-rEE/values-et-rEE.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,162,271,395,497,606,692,797,914,995,1076,1160,1264,1373,1472,1578,1688,1795,1917,2015,2097",
-                        "endColumns": "106,108,123,101,108,85,104,116,80,80,83,103,108,98,105,109,106,121,97,81,100",
-                        "endOffsets": "157,266,390,492,601,687,792,909,990,1071,1155,1259,1368,1467,1573,1683,1790,1912,2010,2092,2193"
+                        "startOffsets": "55,172,280,403,510,621,707,809,926,1006,1084,1167,1278,1383,1482,1592,1693,1796,1924,2026,2108",
+                        "endColumns": "116,107,122,106,110,85,101,116,79,77,82,110,104,98,109,100,102,127,101,81,100",
+                        "endOffsets": "167,275,398,505,616,702,804,921,1001,1079,1162,1273,1378,1477,1587,1688,1791,1919,2021,2103,2204"
                     }
                 }
             ]
@@ -594,21 +594,6 @@
             ]
         },
         {
-            "outputFile": "/Users/sajib/Downloads/MonkeyRocket/app/build/intermediates/res/merged/release/values-te-rIN_values-te-rIN.arsc.flat",
-            "map": [
-                {
-                    "source": "/Users/sajib/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.1.0.aar/b4ac6c14735f9257eae51f8025b47f0c/res/values-te-rIN/values-te-rIN.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,169,277,400,509,620,710,815,940,1022,1104,1189,1302,1410,1510,1621,1723,1840,1967,2068,2151",
-                        "endColumns": "113,107,122,108,110,89,104,124,81,81,84,112,107,99,110,101,116,126,100,82,100",
-                        "endOffsets": "164,272,395,504,615,705,810,935,1017,1099,1184,1297,1405,1505,1616,1718,1835,1962,2063,2146,2247"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/Users/sajib/Downloads/MonkeyRocket/app/build/intermediates/res/merged/release/values_values.arsc.flat",
             "map": [
                 {
@@ -734,6 +719,21 @@
                         "endLines": "378,379,383,384",
                         "endColumns": "12,89,12,79",
                         "endOffsets": "39984,40074,40224,40304"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/sajib/Downloads/MonkeyRocket/app/build/intermediates/res/merged/release/values-te-rIN_values-te-rIN.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/sajib/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.1.0.aar/b4ac6c14735f9257eae51f8025b47f0c/res/values-te-rIN/values-te-rIN.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,169,277,400,509,620,710,815,940,1022,1104,1189,1302,1410,1510,1621,1723,1840,1967,2068,2151",
+                        "endColumns": "113,107,122,108,110,89,104,124,81,81,84,112,107,99,110,101,116,126,100,82,100",
+                        "endOffsets": "164,272,395,504,615,705,810,935,1017,1099,1184,1297,1405,1505,1616,1718,1835,1962,2063,2146,2247"
                     }
                 }
             ]
@@ -925,21 +925,6 @@
             ]
         },
         {
-            "outputFile": "/Users/sajib/Documents/Projects/MonkeyRocket/app/build/intermediates/res/merged/release/values-nb_values-nb.arsc.flat",
-            "map": [
-                {
-                    "source": "/Users/sajib/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.1.0.aar/b4ac6c14735f9257eae51f8025b47f0c/res/values-nb/values-nb.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,163,272,397,492,606,692,792,905,981,1057,1137,1240,1339,1435,1539,1637,1738,1854,1951,2030",
-                        "endColumns": "107,108,124,94,113,85,99,112,75,75,79,102,98,95,103,97,100,115,96,78,100",
-                        "endOffsets": "158,267,392,487,601,687,787,900,976,1052,1132,1235,1334,1430,1534,1632,1733,1849,1946,2025,2126"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/Users/sajib/Documents/Projects/MonkeyRocketClean/app/build/intermediates/res/merged/release/values-az-rAZ_values-az-rAZ.arsc.flat",
             "map": [
                 {
@@ -950,6 +935,21 @@
                         "startOffsets": "55,163,271,394,493,605,693,800,914,995,1074,1159,1266,1373,1473,1582,1686,1796,1893,1976",
                         "endColumns": "107,107,122,98,111,87,106,113,80,78,84,106,106,99,108,103,109,96,82,100",
                         "endOffsets": "158,266,389,488,600,688,795,909,990,1069,1154,1261,1368,1468,1577,1681,1791,1888,1971,2072"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/sajib/Documents/Projects/MonkeyRocket/app/build/intermediates/res/merged/release/values-nb_values-nb.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/sajib/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.1.0.aar/b4ac6c14735f9257eae51f8025b47f0c/res/values-nb/values-nb.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,163,272,397,492,606,692,792,905,981,1057,1137,1240,1339,1435,1539,1637,1738,1854,1951,2030",
+                        "endColumns": "107,108,124,94,113,85,99,112,75,75,79,102,98,95,103,97,100,115,96,78,100",
+                        "endOffsets": "158,267,392,487,601,687,787,900,976,1052,1132,1235,1334,1430,1534,1632,1733,1849,1946,2025,2126"
                     }
                 }
             ]

@@ -216,7 +216,7 @@ public class SnapshotActivity extends AppCompatActivity {
     private void doLastJob() throws FileNotFoundException {
 
         /************* File Upload Code ****************/
-        Toast.makeText(SnapshotActivity.this, "Printing Snapshot...", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(SnapshotActivity.this, "Printing Snapshot...", Toast.LENGTH_SHORT).show();
         System.out.print(jsonString);
         //upLoadServerUri = "https://www.monkeyrocket.review/snap/upload_sajib.php";
         uploadFile(filepath);
@@ -237,13 +237,13 @@ public class SnapshotActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] response) {
                 // called when response HTTP status is "200 OK"
-                Toast.makeText(SnapshotActivity.this, "Data Upload Complete!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(SnapshotActivity.this, "Data Upload Complete!", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] errorResponse, Throwable e) {
                 // called when response HTTP status is "4XX" (eg. 401, 403, 404)
-                Toast.makeText(SnapshotActivity.this, "Data Upload Failed! Error: "+e, Toast.LENGTH_LONG).show();
+                //Toast.makeText(SnapshotActivity.this, "Data Upload Failed! Error: "+e, Toast.LENGTH_LONG).show();
                 Log.e("Upload Exception", "Exception : "
                         + e.getMessage(), e);
             }

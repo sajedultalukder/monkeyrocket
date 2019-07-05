@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                 this.getApplicationContext(), 0, intent, 0);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), (timeInSec * 1000), pendingIntent);
-        Toast.makeText(this, "Snapshot set after " + timeInSec + " seconds", Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "Snapshot set after " + timeInSec + " seconds", Toast.LENGTH_LONG).show();
     }
 
     private boolean checkPermission() {

@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/sajib/Documents/Projects/MonkeyRocketClean/app/src/main/jniLibs"/></dataSet><dataSet config="release"><source path="/Users/sajib/Documents/Projects/MonkeyRocketClean/app/src/release/jniLibs"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/Users/sajib/Documents/Projects/MonkeyRocket/app/src/main/jniLibs"/></dataSet><dataSet config="release"><source path="/Users/sajib/Documents/Projects/MonkeyRocket/app/src/release/jniLibs"/></dataSet></merger>

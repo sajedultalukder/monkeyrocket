@@ -1,4 +1,4 @@
-#Tue Jun 25 22:54:09 EDT 2019
-base.0=/Users/sajib/Documents/Projects/MonkeyRocketClean/app/build/intermediates/transforms/dex/release/0
+#Fri Jul 05 04:46:59 EDT 2019
+base.0=/Users/sajib/Documents/Projects/MonkeyRocket/app/build/intermediates/transforms/dex/release/0
 path.0=classes.dex
 renamed.0=classes.dex

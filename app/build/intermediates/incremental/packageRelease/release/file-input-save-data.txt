@@ -1,7 +1,7 @@
 #Internal package file, do not edit.
-#Tue Jun 25 22:54:09 EDT 2019
+#Fri Jul 05 04:46:59 EDT 2019
 0.baseType=DIRECTORY
-0.base=/Users/sajib/Documents/Projects/MonkeyRocketClean/app/build/intermediates/transforms/dex/release/0
+0.base=/Users/sajib/Documents/Projects/MonkeyRocket/app/build/intermediates/transforms/dex/release/0
 0.path=classes.dex
 0.set=DEX
 count=1
