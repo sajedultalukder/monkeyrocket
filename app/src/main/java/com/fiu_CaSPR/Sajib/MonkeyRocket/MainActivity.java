@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         snapshotButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Perform action on click
-                Intent intent = new Intent(getApplicationContext(),SnapshotActivity2.class);
+                Intent intent = new Intent(getApplicationContext(),SnapshotViewActivity.class);
                 startActivity(intent);
             }
         });

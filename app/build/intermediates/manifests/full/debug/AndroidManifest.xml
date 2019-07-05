@@ -42,7 +42,7 @@
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name="com.fiu_CaSPR.Sajib.MonkeyRocket.SnapshotActivity2"
+            android:name="com.fiu_CaSPR.Sajib.MonkeyRocket.SnapshotViewActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 

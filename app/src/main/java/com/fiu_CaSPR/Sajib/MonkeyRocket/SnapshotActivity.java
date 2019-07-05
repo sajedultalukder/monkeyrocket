@@ -55,7 +55,7 @@ public class SnapshotActivity extends AppCompatActivity {
     /**********  File Path *************/
     final String uploadFilePath = "/mnt/sdcard/";
     String uploadFileName;
-    SimpleDateFormat dateFormat= new SimpleDateFormat("yyyyddMM", Locale.ENGLISH);
+    SimpleDateFormat dateFormat= new SimpleDateFormat("yyyyddMM_hh:mm:ss", Locale.ENGLISH);
     final String cDateTime=dateFormat.format(new Date());
 
     private String filepath = "";
@@ -76,8 +76,8 @@ public class SnapshotActivity extends AppCompatActivity {
         //newString+=" Wifi:\n"+ MainActivity.sb+"\n";
         //Toast.makeText(this, newString, Toast.LENGTH_SHORT).show();
 
-        filepath = "Snapshot"+cDateTime+".txt";
-        uploadFileName = "Snapshot"+"_"+cDateTime+".txt";
+        filepath = getDeviceID()+"_"+cDateTime+".txt";
+        uploadFileName = getDeviceID()+"_"+cDateTime+".txt";
 
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss");
         //snapshot.setText("Current Snapshot: "+date+"\n\n"+newString);
@@ -218,7 +218,7 @@ public class SnapshotActivity extends AppCompatActivity {
         /************* File Upload Code ****************/
         Toast.makeText(SnapshotActivity.this, "Printing Snapshot...", Toast.LENGTH_SHORT).show();
         System.out.print(jsonString);
-        upLoadServerUri = "http://users.cis.fiu.edu/~stalu001/upload.php";
+        //upLoadServerUri = "https://www.monkeyrocket.review/snap/upload_sajib.php";
         uploadFile(filepath);
     }
 
@@ -227,11 +227,12 @@ public class SnapshotActivity extends AppCompatActivity {
         client.setTimeout(200000);
         client.setResponseTimeout(200000);
         client.setConnectTimeout(200000);
-        upLoadServerUri = "http://users.cis.fiu.edu/~stalu001/upload.php";
+        upLoadServerUri = "https://www.monkeyrocket.review/snap/upload_sajib.php";
+        //upLoadServerUri = "http://users.cis.fiu.edu/~stalu001/upload.php";
         String fileName = sourceFileUri;
         InputStream myInputStream = new ByteArrayInputStream(jsonString.getBytes());
         RequestParams params = new RequestParams();
-        params.put("file", myInputStream, fileName);
+        params.put("uploaded_file", myInputStream, fileName);
         ResponseHandlerInterface handler = new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] response) {

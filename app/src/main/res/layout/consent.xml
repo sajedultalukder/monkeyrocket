@@ -20,7 +20,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_gravity="center_vertical"
-    android:background="#141416"
+    android:background="#ffffff"
     android:orientation="vertical"
     android:weightSum="1">
 
@@ -39,21 +39,31 @@
             android:paddingRight="10dp"
             android:layout_marginTop="10px">
 
-            <TextView
-                android:id="@+id/welcome"
+            <ImageView
+                android:id="@+id/logo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textColor="#ffffff"
-                android:text="Please read our data privacy policy carefully and tap 'I Agree' if you wish to proceed."
-                android:textAppearance="@android:style/TextAppearance.Holo.Small" />
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:src="@mipmap/cover"
+                tools:layout_width="wrap_content"
+                android:layout_gravity="center"/>
+
+            <!--<TextView-->
+            <!--android:id="@+id/welcome"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:gravity="center"-->
+            <!--android:textColor="#ffffff"-->
+            <!--android:text="Please read our data privacy policy carefully and tap 'I Agree' if you wish to proceed."-->
+            <!--android:textAppearance="@android:style/TextAppearance.Holo.Small" />-->
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="400dp"
-            android:layout_height="350dp"
+            android:layout_height="470dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:orientation="horizontal">
@@ -62,7 +72,10 @@
                 android:id="@+id/webView1"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="8dp"
+                tools:ignore="MissingConstraints"/>
 
         </LinearLayout>
 
@@ -71,6 +84,7 @@
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:layout_gravity="center"
             android:gravity="center_horizontal"
             android:paddingLeft="20dp"
@@ -82,7 +96,10 @@
                 android:text="Quit"
                 android:id="@+id/disagree"
                 android:layout_weight="1"
-                android:layout_marginRight="20dp" />
+                android:layout_marginRight="20dp"
+                android:textColor="?attr/colorBackgroundFloating"
+                android:textStyle="bold"
+                />
 
             <Button
                 android:layout_width="wrap_content"
@@ -90,6 +107,7 @@
                 android:text="I agree"
                 android:id="@+id/agree"
                 android:layout_weight="1"
+                android:textColor="?attr/colorBackgroundFloating"
                 android:textStyle="bold" />
         </LinearLayout>
 

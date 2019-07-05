@@ -28,12 +28,22 @@ public class Consent extends Activity {
 
         WebView wv;
         wv=(WebView)findViewById(R.id.webView1);
-        wv.loadUrl("http://users.cis.fiu.edu/~stalu001/PRIVACY_POLICY_MR.html");
+        //wv.setInitialScale(1);
+        //wv.getSettings().setJavaScriptEnabled(true);
+        //wv.getSettings().setLoadWithOverviewMode(true);
+        //wv.getSettings().setUseWideViewPort(true);
+        //wv.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
+        //wv.setScrollbarFadingEnabled(false);
+        wv.getSettings().setLoadWithOverviewMode(true);
+        wv.getSettings().setUseWideViewPort(true);
+        wv.getSettings().setBuiltInZoomControls(true);
+        wv.loadUrl("http://www.monkeyrocket.review/PRIVACY_POLICY_MR.html");
+        //wv.loadUrl("http://users.cis.fiu.edu/~stalu001/PRIVACY_POLICY_MR.html");
 
         agreebutton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
 
             }
         });
@@ -53,4 +63,3 @@ public class Consent extends Activity {
     }
 
 }
-

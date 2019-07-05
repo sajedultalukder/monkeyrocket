@@ -37,7 +37,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class SnapshotActivity2 extends AppCompatActivity {
+public class SnapshotViewActivity extends AppCompatActivity {
 
     int serverResponseCode = 0;
     ProgressDialog dialog = null;
