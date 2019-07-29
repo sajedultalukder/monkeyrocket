@@ -2,13 +2,17 @@ package com.fiu_CaSPR.Sajib.MonkeyRocket;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Point;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.View;
 import android.view.Window;
 import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -26,6 +30,14 @@ public class Consent extends Activity {
         Button agreebutton = (Button) findViewById(R.id.agree);
         Button disagreebutton = (Button) findViewById(R.id.disagree);
 
+/*        LinearLayout wvholder = (LinearLayout) findViewById(R.id.wvHolder);
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+        int height = size.y;
+        wvholder.getLayoutParams().height = height * 5;
+        wvholder.getLayoutParams().width = width;*/
         WebView wv;
         wv=(WebView)findViewById(R.id.webView1);
         //wv.setInitialScale(1);

@@ -31,6 +31,21 @@
             ]
         },
         {
+            "outputFile": "/Users/sajib/Documents/MonkeyRocket/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ldltr-v21/values-ldltr-v21.xml",
+            "map": [
+                {
+                    "source": "/Users/sajib/.gradle/caches/transforms-1/files-1.1/appcompat-v7-25.1.0.aar/b4ac6c14735f9257eae51f8025b47f0c/res/values-ldltr-v21/values-ldltr-v21.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "112",
+                        "endOffsets": "163"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "/Users/sajib/Documents/Projects/MonkeyRocket/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ldltr-v21/values-ldltr-v21.xml",
             "map": [
                 {

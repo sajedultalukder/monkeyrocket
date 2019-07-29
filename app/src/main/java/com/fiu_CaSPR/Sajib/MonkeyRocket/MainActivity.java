@@ -102,9 +102,8 @@ public class MainActivity extends AppCompatActivity {
     public void startAlert() {
         int timeInSec = 1;
 
-        Intent intent = new Intent(this, MyBroadcastReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(
-                this.getApplicationContext(), 0, intent, 0);
+        Intent intent = new Intent(getApplicationContext(), MyBroadcastReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), (timeInSec * 1000), pendingIntent);
         //Toast.makeText(this, "Snapshot set after " + timeInSec + " seconds", Toast.LENGTH_LONG).show();

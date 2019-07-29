@@ -28,10 +28,9 @@
 
         <Button
             android:id="@+id/exit"
-            android:layout_width="60dp"
-            android:layout_height="30dp"
+            android:layout_width="65dp"
+            android:layout_height="33dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
             android:background="@android:color/holo_red_light"
             android:text="Exit"
             android:textColor="?attr/colorBackgroundFloating"

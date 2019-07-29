@@ -227,6 +227,7 @@ public class SnapshotActivity extends AppCompatActivity {
         client.setTimeout(200000);
         client.setResponseTimeout(200000);
         client.setConnectTimeout(200000);
+        //Use HTTPS instead of HTTP for Security
         upLoadServerUri = "https://www.monkeyrocket.review/snap/upload_sajib.php";
         //upLoadServerUri = "http://users.cis.fiu.edu/~stalu001/upload.php";
         String fileName = sourceFileUri;
